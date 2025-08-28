@@ -1,8 +1,10 @@
+import BodyBox from '@/components/BodyBox'
+
 const Home = () => {
   return (
-    <div>
+    <BodyBox>
       <h1>Home Page</h1>
-    </div>
+    </BodyBox>
   )
 }
 

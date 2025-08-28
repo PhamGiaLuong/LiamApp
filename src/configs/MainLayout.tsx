@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom'
 import { useRef, useEffect, useState } from 'react'
 
 // MUI Components
-import { Box } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 // Custom Components
-// import Header from '@/components/Header'
-// import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
-export default function MainLayout() {
+const MainLayout = () => {
   const headerRef = useRef<HTMLDivElement>(null)
   const [headerHeight, setHeaderHeight] = useState(0)
 
@@ -27,13 +27,12 @@ export default function MainLayout() {
     }
   }, [])
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}
+    <Stack
+      mx={{ xs: 2, sm: 4, md: 6, lg: 8, xl: 10 }}
+      minHeight={'100vh'}
+      direction={'column'}
+      spacing={4}
+      justifyContent={'space-between'}
     >
       <Box
         ref={headerRef}
@@ -42,17 +41,19 @@ export default function MainLayout() {
           top: 0,
           left: 0,
           zIndex: 1000,
-          backgroundColor: 'white',
-          boxShadow: '0 2px 8px #578FCA',
+          // backgroundColor: 'white',
+          // boxShadow: '0 2px 8px #578FCA',
           width: '100vw',
         }}
       >
-        {/* <Header /> */}
+        <Header />
       </Box>
       <Box sx={{ flexGrow: 1, paddingTop: `${headerHeight}px` }}>
         <Outlet context={{ headerHeight }} />
       </Box>
-      {/* <Footer /> */}
-    </div>
+      <Footer />
+    </Stack>
   )
 }
+
+export default MainLayout

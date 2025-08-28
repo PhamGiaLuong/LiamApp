@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material'
+import { createTheme, type Shadows } from '@mui/material'
 
 const theme = createTheme({
   // Define system colors
@@ -123,8 +123,14 @@ const theme = createTheme({
   // Define shape styles
   // These shapes are used for components like buttons, cards, etc.
   shape: {
-    borderRadius: 16,
+    borderRadius: 4,
   },
+
+  shadows: [
+    'none',
+    '0px 2px 8px 0px #2f2b3d1f',
+    ...Array(23).fill('none'),
+  ] as Shadows,
 
   // Define z-index values
   // These z-index values are used to control the stacking order of components

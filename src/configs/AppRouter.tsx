@@ -20,16 +20,16 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    errorElement: <NotFound />,
     children: [
       { index: true, element: <HomePage /> },
       // { path: 'projects', element: <ProjectsTab /> },
       // { path: 'skills', element: <SkillsTab /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ])
 
-export default function AppRouter() {
+const AppRouter = () => {
   const language = useSelector((state: RootState) => state.language.language)
 
   useEffect(() => {
@@ -37,3 +37,5 @@ export default function AppRouter() {
   }, [language])
   return <RouterProvider router={router} />
 }
+
+export default AppRouter
